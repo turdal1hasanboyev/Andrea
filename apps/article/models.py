@@ -1,17 +1,20 @@
 from django.db import models
 from ..user.models import Account
 
+
 class Category(models.Model):
     title = models.CharField(max_length=225)
     
     def __str__(self):
         return self.title  
 
+
 class Tag(models.Model):
     title = models.CharField(max_length=225)        
 
     def __str__(self):
         return self.title
+
 
 class Article(models.Model):
     title = models.CharField(max_length=225)
@@ -25,6 +28,7 @@ class Article(models.Model):
     def __str__(self):
         return self.title
     
+
 class Comment(models.Model):    
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     user = models.ForeignKey(Account,on_delete=models.SET_NULL,null=True)
