@@ -6,9 +6,7 @@
 
 <div class="col-xl-8 py-5 px-md-5">
 	<div class="row pt-md-4">
-
 		{% for article in articles %}
-
 		<div class="col-md-12">
 			<div class="blog-entry ftco-animate d-md-flex">
 				<a href="single.html" class="img img-2" style="background-image: url( {{article.image.url}} );"></a>
@@ -17,7 +15,8 @@
 					<div class="meta-wrap">
 						<p class="meta">
 							<span><i class="icon-calendar mr-2"></i>{{ article.created_at|date }}</span>
-							<span><a href="single.html"><i class="icon-folder-o mr-2"></i>{{ article.category.title }}</a></span>
+							<span><a href="single.html"><i class="icon-folder-o mr-2"></i>{{ article.category.title
+									}}</a></span>
 							<span><i class="icon-comment2 mr-2"></i>{{ article.comment_set.count }}</span>
 						</p>
 					</div>
@@ -26,9 +25,7 @@
 				</div>
 			</div>
 		</div>
-
 		{% endfor %}
-
 	</div>
 
 	{% include 'paginator.html'%}

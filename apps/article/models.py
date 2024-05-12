@@ -1,9 +1,23 @@
 from django.db import models
-from ..user.models import Account
+from apps.user.models import Account
+from django.template.defaultfilters import slugify
+from django.urls import reverse
+
 
 
 class Category(models.Model):
     title = models.CharField(max_length=225)
+
+    slug = models.SlugField(unique=True, null=True, blank=True, max_length=225)
+
+    def get_absolute_url(self):
+        return reverse("category", kwargs={"slug": self.slug})
+
+    def save(self, *args, **kwargs):  
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+        return super().save(*args, **kwargs)
     
     def __str__(self):
         return self.title  
@@ -17,6 +31,8 @@ class Tag(models.Model):
 
 
 class Article(models.Model):
+    slug = models.SlugField(unique=True, null=True, blank=True, max_length=225)
+    
     title = models.CharField(max_length=225)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -24,6 +40,15 @@ class Article(models.Model):
     image = models.ImageField(upload_to="Article/")
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag,blank=True)
+
+    def get_absolute_url(self):
+        return reverse("detail", kwargs={"slug": self.slug})
+
+    def save(self, *args, **kwargs):  
+        if not self.slug:
+            self.slug = slugify(self.title)
+            
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title

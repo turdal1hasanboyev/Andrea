@@ -1,12 +1,12 @@
-from django.shortcuts import render
-from .models import Article, Category, Tag, Comment
-
+from django.shortcuts import render, redirect
+from .models import Article, Category, Comment
 
 def index(request):
+    articles = Article.objects.all().order_by('-id')
 
-    articles = Article.objects.all()
+
     context = {
-        'articles':articles
-    }
-    return render(request, 'index.html',context)
-
+        "articles": articles,
+        }
+    
+    return render(request, 'index.html', context)
