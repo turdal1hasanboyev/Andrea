@@ -42,7 +42,7 @@ class Article(models.Model):
     tags = models.ManyToManyField(Tag,blank=True)
 
     def get_absolute_url(self):
-        return reverse("detail", kwargs={"slug": self.slug})
+        return reverse("single", kwargs={"slug": self.slug})
 
     def save(self, *args, **kwargs):  
         if not self.slug:
