@@ -4,7 +4,6 @@ from django.template.defaultfilters import slugify
 from django.urls import reverse
 
 
-
 class Category(models.Model):
     title = models.CharField(max_length=225)
 
@@ -64,3 +63,4 @@ class Comment(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    

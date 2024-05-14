@@ -62,3 +62,13 @@ def single(request, slug):
         }
     
     return render(request, 'single.html',context)
+
+
+def travel(request):
+    articles = Article.objects.all().order_by('-id')
+
+    context = {
+        "articles": articles,
+    }
+
+    return redirect(request, 'travel.html', context)
