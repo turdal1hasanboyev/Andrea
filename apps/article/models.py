@@ -39,6 +39,7 @@ class Article(models.Model):
     image = models.ImageField(upload_to="Article/")
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag,blank=True)
+    views = models.IntegerField(default=0)
 
     def get_absolute_url(self):
         return reverse("single", kwargs={"slug": self.slug})
@@ -60,6 +61,7 @@ class Comment(models.Model):
     email = models.EmailField()
     website = models.URLField(null=True,blank=True)
     message = models.TextField()
+    created_at = models.DateTimeField(null=True, auto_now_add=True)
 
     def __str__(self) -> str:
         return self.name

@@ -13,7 +13,7 @@
         <h3 class="sidebar-heading">Categories</h3>
         <ul class="categories">
             {% for cat in categories %}
-            <li><a href="{% url 'category' cat.slug %}">{{ cat.title }} <span>({{ cat.article_set.count }})</span></a>
+            <li><a href="?cat={{ cat.slug }}">{{ cat.title }} <span>({{ cat.article_set.count }})</span></a>
             </li>
             {% endfor %}
         </ul>
@@ -21,26 +21,26 @@
 
     <div class="sidebar-box ftco-animate">
         <h3 class="sidebar-heading">Popular Articles</h3>
+        {% for article in popular_articles %}
         <div class="block-21 mb-4 d-flex">
-            {% for article in popular_articles %}
-            <a class="blog-img mr-4" style="background-image: url({{article.image_1.url}});"></a>
+            <a class="blog-img mr-4" style="background-image: url({{ article.image.url }});"></a>
             <div class="text">
                 <h3 class="heading"><a href="{{ article.get_absolute_url }}">{{ article.title|slice:"0:35" }}</a></h3>
                 <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span>{{ article.created_at|date }}</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Dave Lewis</a></div>
-                    <div><a href="#"><span class="icon-chat"></span>{{ article.comment_set.count }}</a></div>
+                    <div><a href="{{ article.get_absolute_url }}"><span class="icon-calendar"></span>{{ article.created_at|date }}</a></div>
+                    <div><a href="{{ article.get_absolute_url }}"><span class="icon-person"></span>{{ article.user.first_name }}</a></div>
+                    <div><a href="{{ article.get_absolute_url }}"><span class="icon-chat"></span>{{ article.comment_set.count }}</a></div>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
 
     <div class="sidebar-box ftco-animate">
         <h3 class="sidebar-heading">Tag Cloud</h3>
         <ul class="tagcloud">
             {% for tag in tags %}
-            <li><a href="?tag={{tag}}">{{tag}}</a></li>
+            <a href="?tag={{tag}}" class="tag-cloud-link">{{tag}}</a>
             {% endfor %}
         </ul>
     </div>

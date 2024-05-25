@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Contact
-from .forms import Contact
+from .forms import ContactForm
 
 
 def get_in_touch(request):
-    form = Contact(request.POST or None)
+    form = ContactForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect("contact")
