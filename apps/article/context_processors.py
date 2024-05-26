@@ -1,5 +1,6 @@
 from .models import Article, Category, Tag
 
+
 def data(request):
     articles = Article.objects.all().order_by('-id')
     popular_articles = articles.order_by('?')[:3]

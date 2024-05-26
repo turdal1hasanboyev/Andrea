@@ -6,15 +6,15 @@
 
 <div class="col-lg-8 px-md-5 py-5">
 	<div class="row pt-md-4">
-		<h1 class="mb-3">{{ article.title}}</h1>
-		<p>{{ article.body}}</p>
+		<h1 class="mb-3">{{ article.title }}</h1>
+		<p>{{ article.body }}</p>
 		<p>
 			<img src="{{article.image.url }}" alt="Image placeholder" class="img-fluid">
 		</p>
 		<div class="tag-widget post-tag-container mb-5 mt-5">
 			<div class="tagcloud">
 				{% for tag in article.tags.all %}
-				<a href="#" class="tag-cloud-link">{{tag}}</a>
+				<a href="#" class="tag-cloud-link">{{ tag }}</a>
 				{% endfor %}
 			</div>
 		</div>
@@ -61,7 +61,6 @@
 					<div class="form-group">
 						<input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
 					</div>
-
 				</form>
 			</div>
 		</div>

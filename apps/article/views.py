@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Article, Category, Comment, Tag
+from .models import Article, Category, Comment, Tag, Account
 from django.core.paginator import Paginator
 
 
@@ -11,7 +11,6 @@ def index(request):
     popular_articles = articles.order_by('?')[:3]
     categories = Category.objects.all().order_by('title')
     tags = Tag.objects.all().order_by('title')
-
 
     if tag:
         articles = articles.filter(tags__title__exact=tag)
@@ -71,15 +70,13 @@ def travel(request):
 
     articles = Article.objects.filter(category__slug__exact="travel").order_by('-id')
     
-
     if tag:
         articles = articles.filter(tags__title__exact=tag)
 
     page_number = request.GET.get('page')
     paginator = Paginator(articles, 10)
     selected_page = paginator.get_page(page_number)
-
-    
+ 
     context = {
         "articles": selected_page,
     }
@@ -100,5 +97,11 @@ def fashion(request):
     return render(request, 'fashion.html', context)
 
 def about(request):
+    user = Account.objects.get(id=1)
+    print(user)
 
-    return render(request, 'about.html')
+    context ={
+        "user": user,
+    }
+
+    return render(request, 'about.html', context)
