@@ -7,5 +7,5 @@ urlpatterns = [
     path('detail/<slug:slug>/', single, name='single'),
     path('travel/', travel, name='travel'),
     path('fashion/', fashion, name='fashion'),
-    path('about/', about, name='about')
+    path('about/', about, name='about'),
 ]
