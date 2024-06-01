@@ -30,7 +30,7 @@ def index(request):
         "tags": tags,
         }
     
-    return render(request, 'index.html',context)
+    return render(request, 'index.html', context)
 
 def single(request, slug):
     article = Article.objects.get(slug__exact=slug)
@@ -63,7 +63,7 @@ def single(request, slug):
         "comments": comments,
         }
     
-    return render(request, 'single.html',context)
+    return render(request, 'single.html', context)
 
 def travel(request):
     tag = request.GET.get('tag')
