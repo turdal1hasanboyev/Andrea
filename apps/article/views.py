@@ -98,8 +98,7 @@ def fashion(request):
 
 def about(request):
     user = Account.objects.get(id=1)
-    print(user)
-
+    
     context ={
         "user": user,
     }
