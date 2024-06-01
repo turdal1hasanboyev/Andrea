@@ -16,7 +16,7 @@
 						<div class="meta-wrap">
 							<p class="meta">
 								<span><i class="icon-calendar mr-2"></i>{{ article.created_at|date }}</span>
-								<span><a href="{{ article.get_absolute_url }}"><i class="icon-folder-o mr-2"></i>{{article.category }}</a></span>
+								<span><a href="{{ article.get_absolute_url }}"><i class="icon-folder-o mr-2"></i>{{ article.category }}</a></span>
 								<span><i class="icon-comment2 mr-2"></i>{{article.comment_set.count }}</span>
 							</p>
 						</div>
