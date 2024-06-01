@@ -8,8 +8,8 @@ def data(request):
     tags = Tag.objects.all().order_by('title')
 
     return {
-       "categories": categories,
-       "popular_articles": popular_articles,
-       "tags": tags,
-       "articles": articles
+      "categories": categories,
+      "popular_articles": popular_articles,
+      "tags": tags,
+      "articles": articles
     }
