@@ -34,12 +34,14 @@ def register_view(request):
 def login_view(request):
     if request.user.is_authenticated:
         return redirect("/")
+    
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
 
         user = authenticate(username=username, password=password)
         login(request, user)
+
         return redirect("/")
 
     return render(request, 'login.html')
