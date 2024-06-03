@@ -34,6 +34,7 @@ def index(request):
 
 def single(request, slug):
     article = Article.objects.get(slug__exact=slug)
+    
     article.views+=1
     article.save()
 

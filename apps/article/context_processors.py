@@ -11,5 +11,5 @@ def data(request):
       "categories": categories,
       "popular_articles": popular_articles,
       "tags": tags,
-      "articles": articles
+      "articles": articles,
     }
