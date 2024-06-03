@@ -40,6 +40,7 @@ def login_view(request):
         password = request.POST.get('password')
 
         user = authenticate(username=username, password=password)
+        
         login(request, user)
 
         return redirect("/")
@@ -48,4 +49,5 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
+
     return redirect("/")
