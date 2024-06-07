@@ -85,7 +85,7 @@ def travel(request):
     return render(request, 'travel.html', context)
 
 def fashion(request):
-    articles = Article.objects.all().order_by('-id')
+    articles = Article.objects.filter(category__slug__exact="fashion").order_by('-id')
 
     page_number = request.GET.get('page')
     paginator = Paginator(articles, 10)
