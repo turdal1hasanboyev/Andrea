@@ -1,12 +1,14 @@
 from django.db import models
+
 from apps.user.models import Account
+
 from django.template.defaultfilters import slugify
+
 from django.urls import reverse
 
 
 class Category(models.Model):
     title = models.CharField(max_length=225)
-
     slug = models.SlugField(unique=True, null=True, blank=True, max_length=225)
 
     def get_absolute_url(self):
@@ -31,7 +33,6 @@ class Tag(models.Model):
 
 class Article(models.Model):
     slug = models.SlugField(unique=True, null=True, blank=True, max_length=225)
-    
     title = models.CharField(max_length=225)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

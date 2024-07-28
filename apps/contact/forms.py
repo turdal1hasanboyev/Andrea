@@ -1,5 +1,6 @@
 from django import forms
-from .models import Contact
+
+from apps.contact.models import Contact
 
 
 class ContactForm(forms.ModelForm):
