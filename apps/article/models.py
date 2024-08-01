@@ -1,10 +1,9 @@
 from django.db import models
 
-from apps.user.models import Account
-
 from django.template.defaultfilters import slugify
-
 from django.urls import reverse
+
+from apps.user.models import Account
 
 
 class Category(models.Model):

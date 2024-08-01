@@ -10,10 +10,11 @@ def index(request):
     cat = request.GET.get('cat')
 
     articles = Article.objects.all().order_by('-id')
-    popular_articles = articles.order_by('?')[:3]
     categories = Category.objects.all().order_by('title')
     tags = Tag.objects.all().order_by('title')
 
+    popular_articles = articles.order_by('?')[:3]
+    
     if tag:
         articles = articles.filter(tags__title__exact=tag)
 
@@ -38,6 +39,7 @@ def single(request, slug):
     article = Article.objects.get(slug__exact=slug)
     
     article.views+=1
+    
     article.save()
 
     comments = Comment.objects.filter(article_id=article.id)
