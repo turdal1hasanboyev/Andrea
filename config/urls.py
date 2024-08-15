@@ -25,8 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     path('',include('apps.article.urls')),
-    path('contact/',include('apps.contact.urls')),
-    path('user/',include('apps.user.urls')),
+    path('',include('apps.contact.urls')),
 
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),

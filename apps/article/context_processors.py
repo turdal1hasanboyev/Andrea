@@ -6,11 +6,11 @@ def data(request):
     categories = Category.objects.all().order_by('title')
     tags = Tag.objects.all().order_by('title')
 
-    popular_articles = articles.order_by('?')[:3]
+    popular_articles = articles.order_by('?')
     
     return {
       "categories": categories,
-      "popular_articles": popular_articles,
+      "popular_articles": popular_articles[:3],
       "tags": tags,
       "articles": articles,
     }
