@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from apps.article.models import Article, Comment, Account
+from .models import Article, Comment, Account
 
 from django.core.paginator import Paginator
 
